@@ -1,1 +1,10 @@
+# Configuracion de IntelliJ
 .idea/
+*.iml
+
+# Archivos generados por Maven
+**/target/
+
+# Configuracion local y registros
+.env
+*.log
