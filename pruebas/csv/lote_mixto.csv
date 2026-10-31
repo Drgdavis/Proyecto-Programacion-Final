@@ -1,0 +1,7 @@
+﻿codigo,nombre,categoria,precio,existencia
+CSV001,"Teclado, mecanico",Perifericos,450.00,12
+CSV002,Monitor CSV,Monitores,1800.00,4
+CSV003,Precio incorrecto,Perifericos,0,10
+CSV004,Categoria incorrecta,NoExiste,100.00,3
+CSV001,Codigo repetido,Perifericos,200.00,8
+CSV005,Existencia incorrecta,Perifericos,100.00,-1

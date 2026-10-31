@@ -10,7 +10,8 @@ public record ImportacionResponse(
         String estado,
         int total,
         int aceptados,
-        int rechazados) {
+        int rechazados,
+        String mensaje) {
 
     public static ImportacionResponse desde(Importacion importacion) {
         return new ImportacionResponse(
@@ -20,7 +21,8 @@ public record ImportacionResponse(
                 importacion.getEstado(),
                 importacion.getTotal(),
                 importacion.getAceptados(),
-                importacion.getRechazados()
+                importacion.getRechazados(),
+                importacion.getMensaje()
         );
     }
 }

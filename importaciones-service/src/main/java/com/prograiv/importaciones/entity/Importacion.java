@@ -29,6 +29,9 @@ public class Importacion {
     @Column(nullable = false)
     private int rechazados;
 
+    @Column(columnDefinition = "TEXT")
+    private String mensaje;
+
     protected Importacion() {
     }
 
@@ -38,21 +41,33 @@ public class Importacion {
         this.estado = "PROCESANDO";
     }
 
-    public void completar(int total, int aceptados, int rechazados) {
-        if (total < 0 || aceptados < 0 || rechazados < 0
+    public void preparar(int total, int rechazados) {
+        if (total < 0 || rechazados < 0 || rechazados > total) {
+            throw new IllegalArgumentException("Contadores incorrectos.");
+        }
+
+        this.total = total;
+        this.rechazados = rechazados;
+    }
+
+    public void completar(int aceptados, int rechazados) {
+        if (aceptados < 0 || rechazados < 0
                 || (long) aceptados + rechazados != total) {
             throw new IllegalArgumentException(
                     "Los contadores de la importacion no coinciden.");
         }
 
-        this.total = total;
         this.aceptados = aceptados;
         this.rechazados = rechazados;
-        this.estado = "COMPLETADA";
+        this.estado = rechazados == 0
+                ? "COMPLETADA"
+                : "COMPLETADA_CON_ERRORES";
+        this.mensaje = null;
     }
 
-    public void marcarFallida() {
+    public void marcarFallida(String mensaje) {
         this.estado = "FALLIDA";
+        this.mensaje = mensaje;
     }
 
     public Long getId() {
@@ -81,5 +96,9 @@ public class Importacion {
 
     public int getRechazados() {
         return rechazados;
+    }
+
+    public String getMensaje() {
+        return mensaje;
     }
 }

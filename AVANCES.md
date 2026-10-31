@@ -518,3 +518,18 @@ Referencias de apoyo: [Spring Data JPA](https://spring.io/guides/gs/accessing-da
 - Verificada pagina negativa: respuesta 400.
 - Verificado identificador inexistente: respuesta 404.
 - Pendiente: carga CSV, envio al catalogo y resultados reales en el historial.
+
+
+### Importacion CSV integrada con catalogo
+
+- Implementada carga multipart de CSV UTF-8.
+- Lectura con Apache Commons CSV, respetando campos entre comillas.
+- Validacion de encabezados, columnas y valores por fila.
+- Comunicacion con catalogo mediante Eureka y RestClient con balanceo.
+- Separado el cliente HTTP normal del cliente con balanceo.
+- Persistidos resumen y resultados por fila.
+- Verificado lote mixto: 6 filas, 2 aceptadas y 4 rechazadas.
+- Verificadas consultas posteriores de detalle, errores y productos.
+- Verificados encabezados incorrectos: respuesta 400 e intento con ID 2.
+- Pendiente: ampliar pruebas de archivos y fallos de comunicacion.
+- Pendiente: frontend PHP, Swagger y documentacion final.
