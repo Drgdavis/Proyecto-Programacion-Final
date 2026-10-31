@@ -6,17 +6,17 @@ Este archivo es la bitácora del proyecto. Se actualiza al cerrar cada avance y 
 
 | Dato | Estado |
 |---|---|
-| Última sesión documentada | Viernes 30 de octubre de 2026, horario de Ciudad de México. |
+| Última sesión documentada | Sabado 31 de octubre de 2026, horario de Ciudad de Mexico. |
 | Entrega de trabajo | Martes 3 de noviembre de 2026, según la aclaración del estudiante. El PDF original indica el lunes 2. |
 | Avance global estimado | Aproximadamente 10 %. Es una estimación de trabajo, no una calificación. |
 | Repositorio | https://github.com/Drgdavis/Proyecto-Programacion-Final |
 | Carpeta local | `C:\Users\davis\IdeaProjects\Proyecto-Programacion-Final` |
 | Rama utilizada | `main`. |
-| Último resultado comprobado | GET /api/categorias responde HTTP 200 con Monitores (2) y Perifericos (1), leidos de MySQL. |
-| Próxima tarea | Implementar consulta de productos con filtros, paginacion y detalle individual. |
-| Pendiente de confirmar | Resultado HTTP y contenido real de categorías. Los archivos nuevos de esta consulta, la bitácora y la plantilla de usuario aún requieren revisión y commit. |
+| Último resultado comprobado | Categorias verifica HTTP 200; las consultas de productos estan implementadas y compilan con BUILD SUCCESS. |
+| Próxima tarea | Revisar los criterios de evaluacion que enviara el estudiante y probar las consultas de productos contra MySQL. |
+| Pendiente de confirmar | Pruebas HTTP del bloque de productos. Categorias ya esta probado y subido en ec7db6e; los archivos de productos aun no tienen commit. |
 
-**Al volver:** comprobar que MySQL esté ejecutándose, proporcionar la contraseña en la terminal, arrancar catálogo y abrir `http://localhost:8081/api/categorias`. La compilación ya está comprobada; falta verificar el resultado HTTP y la lectura de la base.
+**Al volver:** leer los criterios nuevos, comprobar MySQL, proporcionar la contrasena de catalogo_app en la terminal y reiniciar catalogo. Categorias ya esta probado; falta probar las rutas de productos.
 
 ## 2. Contexto de aprendizaje y forma de trabajar
 
@@ -145,6 +145,7 @@ Commits cuya creación y subida quedaron comprobadas en la conversación:
 | `47e24fe` | Excluir configuración local de IntelliJ. | Push confirmado. |
 | `faf7547` | Crear estructura inicial del microservicio de catálogo. | Push confirmado. |
 | `fec1904` | Configurar persistencia del catálogo con Mysql. | Commit comprobado el 30 de octubre; coincide con la referencia local `origin/main`. |
+| `ec7db6e` | Agregar consulta de categorias desde MySQL. | Creado y subido por el asistente el 30 de octubre; el estudiante solicito realizar los siguientes commits por su cuenta. |
 
 Avance actual pendiente de commit:
 
@@ -219,7 +220,7 @@ Condición para marcarlo terminado:
 - [x] Los datos proceden de MySQL.
 - [x] La respuesta incluye Perifericos y Monitores.
 - [x] Los datos conservan sus identificadores y nombres.
-- [ ] El avance está confirmado y subido a GitHub.
+- [x] El avance de categorias esta confirmado y subido a GitHub: ec7db6e.
 
 ## 8. Cómo arrancar al volver
 
@@ -260,7 +261,7 @@ cd "C:\Users\davis\IdeaProjects\Proyecto-Programacion-Final"
 ### A. Completar catálogo
 
 - [x] Consulta de categorias.
-- [ ] Entidad y persistencia de productos.
+- [x] Entidad y repositorio de productos implementados y compilados; prueba de consulta pendiente.
 - [ ] DTO de entrada y salida.
 - [ ] Registro por lote con respuesta individual y correlación por elemento.
 - [ ] Validar campos obligatorios, categoría, código único, precio y existencia.
@@ -437,3 +438,31 @@ Referencias de apoyo: [Spring Data JPA](https://spring.io/guides/gs/accessing-da
 - Queda comprobado el recorrido controlador, servicio, repositorio y MySQL.
 - El error de autenticacion anterior esta resuelto para la ejecucion actual.
 - Proximo bloque: entidad Producto, listado paginado, filtros por codigo/nombre/categoria y detalle individual.
+## 14. Sesion del 31 de octubre: consultas de productos
+
+- Se agregaron Producto, ProductoRepository, ProductoResponse, PaginaResponse, ApiError, ApiExceptionHandler, ProductoService y ProductoController.
+- Rutas preparadas: GET /api/productos y GET /api/productos/{id}.
+- Parametros: codigo, nombre, categoriaId, page y size. Los filtros de texto buscan coincidencias parciales sin distinguir mayusculas; los filtros se combinan.
+- Paginacion: page parte de cero; size predeterminado 10, permitido entre 1 y 100. Orden estable por identificador.
+- Respuesta de pagina: contenido, pagina, tamanio, totalElementos y totalPaginas.
+- Se prepararon respuestas 400 para parametros invalidos y 404 para productos inexistentes.
+- Compilacion comprobada: Maven termino con BUILD SUCCESS y compilo 14 archivos fuente con Java 21.
+- Pendiente: reiniciar catalogo con la credencial local y verificar consultas, paginacion y errores contra MySQL. Los filtros con coincidencias y el detalle existente deben probarse cuando existan productos de prueba.
+- Registro por lote, reglas de incorporacion y demas componentes siguen pendientes.
+- No se crearon commits ni se hizo push en esta sesion.
+
+### Flujo de trabajo y nueva informacion de evaluacion
+
+- El 30 de octubre el estudiante indico que el mismo debe realizar git add, commit y push. El asistente puede editar archivos, revisar Git y compilar. Esta preferencia se conserva mientras se define un cambio de flujo.
+- El 31 de octubre propuso que el asistente implemente el programa y registre avances, y dedicar su tiempo a estudiar y practicar modificaciones.
+- Antes de adoptar ese enfoque se contrastaran los criterios nuevos que enviara el estudiante con el enunciado original, que indica anulacion de proyectos generados totalmente por IA.
+- El estudio y ensayo se orientaran a preguntas sobre el codigo real, seguimiento de datos y cambios practicos, con una pregunta a la vez.
+- La bitacora debe seguir distinguiendo codigo implementado, compilacion correcta y funcionalidad probada.
+
+### 31 de octubre — Consultas de productos
+
+- Probado GET /api/productos: devuelve una página vacía
+  con contenido, pagina, tamanio, totalElementos y totalPaginas.
+- Probado page=-1: devuelve estado 400 y un mensaje comprensible.
+- Pendiente: probar filtros, varias páginas y detalle con productos reales.
+- Próxima tarea: implementar registro por lote y validaciones.
