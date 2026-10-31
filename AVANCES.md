@@ -509,3 +509,12 @@ Referencias de apoyo: [Spring Data JPA](https://spring.io/guides/gs/accessing-da
 
 
 - Verificados filtros, paginacion y respuesta 400 mediante Gateway.
+
+### Historial de importaciones verificado
+
+- Consulta paginada conectada a MySQL.
+- Ruta de importaciones funcionando mediante Gateway.
+- Verificado historial vacio.
+- Verificada pagina negativa: respuesta 400.
+- Verificado identificador inexistente: respuesta 404.
+- Pendiente: carga CSV, envio al catalogo y resultados reales en el historial.
