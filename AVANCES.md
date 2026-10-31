@@ -481,3 +481,14 @@ Referencias de apoyo: [Spring Data JPA](https://spring.io/guides/gs/accessing-da
   filtro por codigo sin distinguir mayusculas y detalle individual.
 - Proxima tarea: preparar Eureka y Gateway.
 - Pendientes del catalogo: Swagger/OpenAPI, logs y pruebas restantes.
+
+
+### 31 de octubre — Eureka y registro del catalogo
+
+- Eureka Server ejecutandose en el puerto 8761.
+- Configurado como servidor independiente.
+- Agregado Eureka Client al catalogo.
+- Verificado CATALOGO-SERVICE registrado con estado UP, puerto 8081.
+- Mantener Eureka y catalogo ejecutandose en terminales separadas.
+- Proxima tarea: crear Spring Cloud Gateway en el puerto 8080
+  y consultar el catalogo mediante una ruta con descubrimiento.
