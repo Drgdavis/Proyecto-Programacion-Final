@@ -492,3 +492,16 @@ Referencias de apoyo: [Spring Data JPA](https://spring.io/guides/gs/accessing-da
 - Mantener Eureka y catalogo ejecutandose en terminales separadas.
 - Proxima tarea: crear Spring Cloud Gateway en el puerto 8080
   y consultar el catalogo mediante una ruta con descubrimiento.
+
+
+### 31 de octubre — Gateway conectado al catalogo
+
+- Creado gateway-service con Spring Cloud Gateway WebFlux.
+- Configurado en el puerto 8080.
+- Registrado en Eureka junto con catalogo-service; ambos en estado UP.
+- Configurada ruta explicita para /api/productos y /api/categorias.
+- Destino lb://catalogo-service mediante descubrimiento en Eureka.
+- Verificadas consultas de categorias y productos desde el puerto 8080.
+- Arranque local: Eureka primero, catalogo despues y Gateway al final.
+- Pendiente: comprobar filtros, paginacion y errores mediante Gateway.
+- Siguiente componente: microservicio de importaciones CSV.
