@@ -466,3 +466,18 @@ Referencias de apoyo: [Spring Data JPA](https://spring.io/guides/gs/accessing-da
 - Probado page=-1: devuelve estado 400 y un mensaje comprensible.
 - Pendiente: probar filtros, varias páginas y detalle con productos reales.
 - Próxima tarea: implementar registro por lote y validaciones.
+
+
+
+### 31 de octubre — Registro por lote verificado
+
+- Implementado POST /api/productos/lote.
+- Probado un lote de 6 productos: 2 aceptados y 4 rechazados.
+- Rechazos comprobados: precio cero, categoria inexistente,
+  codigo duplicado y existencia negativa.
+- Cada resultado conserva su itemId y motivo de rechazo.
+- Los productos aceptados permanecen guardados.
+- Verificados listado, dos paginas, filtros por nombre/categoria,
+  filtro por codigo sin distinguir mayusculas y detalle individual.
+- Proxima tarea: preparar Eureka y Gateway.
+- Pendientes del catalogo: Swagger/OpenAPI, logs y pruebas restantes.
