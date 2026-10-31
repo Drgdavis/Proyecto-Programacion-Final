@@ -505,3 +505,7 @@ Referencias de apoyo: [Spring Data JPA](https://spring.io/guides/gs/accessing-da
 - Arranque local: Eureka primero, catalogo despues y Gateway al final.
 - Pendiente: comprobar filtros, paginacion y errores mediante Gateway.
 - Siguiente componente: microservicio de importaciones CSV.
+
+
+
+- Verificados filtros, paginacion y respuesta 400 mediante Gateway.
