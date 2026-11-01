@@ -13,9 +13,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/api/productos")
+@Tag(
+        name = "Productos",
+        description = "Consultas y registro de productos"
+)
+
 public class ProductoController {
 
     private final ProductoService productoService;
@@ -28,6 +35,12 @@ public class ProductoController {
         this.productoService = productoService;
         this.loteProductosService = loteProductosService;
     }
+
+    @Operation(
+            summary = "Buscar productos con paginacion",
+            description = "Filtros opcionales: codigo, nombre y categoriaId. "
+                    + "page comienza en 0; size admite valores entre 1 y 100."
+    )
 
     @GetMapping
     public PaginaResponse<ProductoResponse> listar(
@@ -42,10 +55,19 @@ public class ProductoController {
         );
     }
 
+    @Operation(summary = "Consultar un producto por identificador")
+
     @GetMapping("/{id}")
     public ProductoResponse obtenerPorId(@PathVariable("id") Long id) {
         return productoService.obtenerPorId(id);
     }
+
+    @Operation(
+            summary = "Registrar productos por lote",
+            description = "Evalua cada producto y devuelve su itemId, "
+                    + "aceptacion, productoId o motivo de rechazo. "
+                    + "Los productos validos se conservan aunque otros se rechacen."
+    )
 
     @PostMapping("/lote")
     public LoteProductosResponse registrarLote(

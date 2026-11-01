@@ -8,3 +8,6 @@
 # Configuracion local y registros
 .env
 *.log
+
+# Archivos generados de logging
+**/logs/
