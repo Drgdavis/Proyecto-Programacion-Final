@@ -533,3 +533,14 @@ Referencias de apoyo: [Spring Data JPA](https://spring.io/guides/gs/accessing-da
 - Verificados encabezados incorrectos: respuesta 400 e intento con ID 2.
 - Pendiente: ampliar pruebas de archivos y fallos de comunicacion.
 - Pendiente: frontend PHP, Swagger y documentacion final.
+
+
+### Frontend PHP MVC — catalogo
+
+- Creada estructura MVC y cliente HTTP hacia Gateway.
+- Implementados inicio, listado, filtros, paginacion y detalle.
+- Implementada pantalla de errores.
+- Ajustado cliente cURL para PHP 8.5.
+- Verificados inicio con 4 productos y 2 categorias, y listado general.
+- Pendiente: confirmar filtros, paginacion y detalle desde la web.
+- Pendiente: carga CSV, resultados e historial en PHP.
