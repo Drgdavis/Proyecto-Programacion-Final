@@ -1,12 +1,12 @@
 <section class="encabezado">
-    <p class="etiqueta">CATÁLOGO</p>
+    <p class="etiqueta">RESUMEN</p>
     <h1>Gestión de productos</h1>
     <p class="secundario">
-        Consulta los productos registrados y encuentra sus detalles.
+        Importa productos, revisa sus resultados y consulta el catálogo.
     </p>
 </section>
 
-<section class="tarjetas" aria-label="Resumen del catálogo">
+<section class="tarjetas" aria-label="Resumen del sistema">
     <article class="tarjeta indicador">
         <span>Productos registrados</span>
         <strong><?= e($totalProductos) ?></strong>
@@ -16,16 +16,47 @@
         <span>Categorías disponibles</span>
         <strong><?= e($totalCategorias) ?></strong>
     </article>
+
+    <article class="tarjeta indicador">
+        <span>Importaciones registradas</span>
+        <strong><?= e($totalImportaciones) ?></strong>
+    </article>
 </section>
 
 <section class="tarjeta">
-    <h2>Consulta el catálogo</h2>
+    <h2>Importa un archivo de productos</h2>
     <p>
-        Busca por código, nombre o categoría y revisa el precio
-        y la existencia de cada producto.
+        Recibirás un resumen y el resultado de cada fila.
+        Los registros rechazados incluirán su motivo.
     </p>
 
-    <a class="boton" href="<?= e(enlace('productos')) ?>">
-        Ver productos
-    </a>
+    <div class="acciones">
+        <a class="boton" href="<?= e(enlace('importar')) ?>">
+            Importar CSV
+        </a>
+
+        <a class="boton secundario" href="<?= e(enlace('productos')) ?>">
+            Consultar productos
+        </a>
+    </div>
 </section>
+
+<?php if ($ultimaImportacion !== null): ?>
+    <section class="tarjeta">
+        <h2>Última importación</h2>
+        <p>
+            <strong><?= e($ultimaImportacion['archivo']) ?></strong>
+        </p>
+        <p class="secundario">
+            <?= e($ultimaImportacion['estado']) ?>
+            · <?= e($ultimaImportacion['aceptados']) ?> aceptados
+            · <?= e($ultimaImportacion['rechazados']) ?> rechazados
+        </p>
+
+        <a href="<?= e(enlace('resultado-importacion', [
+            'id' => $ultimaImportacion['id'],
+        ])) ?>">
+            Consultar resultado
+        </a>
+    </section>
+<?php endif; ?>

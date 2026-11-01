@@ -1,12 +1,13 @@
 <?php
 
-
 declare(strict_types=1);
 
 class InicioController
 {
-    public function __construct(private CatalogoModel $catalogo)
-    {
+    public function __construct(
+        private CatalogoModel $catalogo,
+        private ImportacionModel $importaciones
+    ) {
     }
 
     public function mostrar(): void
@@ -17,11 +18,14 @@ class InicioController
         ]);
 
         $categorias = $this->catalogo->categorias();
+        $historial = $this->importaciones->listar(0, 1);
 
         render('inicio', [
             'titulo' => 'Inicio',
             'totalProductos' => $productos['totalElementos'],
             'totalCategorias' => count($categorias),
+            'totalImportaciones' => $historial['totalElementos'],
+            'ultimaImportacion' => $historial['contenido'][0] ?? null,
         ]);
     }
 }

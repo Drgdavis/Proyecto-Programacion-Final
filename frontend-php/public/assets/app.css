@@ -265,3 +265,41 @@ dd {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
 }
+
+.ejemplo {
+    padding: 14px;
+    background: #f3f6fb;
+    border: 1px solid #dce3ee;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 14px;
+}
+
+.estado {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #e8efff;
+    color: #214da7;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.texto-exito {
+    color: #17643d;
+    font-weight: bold;
+}
+
+.texto-error {
+    color: #b42335;
+    font-weight: bold;
+}
+
+input[type="file"] {
+    padding: 12px;
+    background: #f8faff;
+}
+
+form > .acciones {
+    margin-top: 20px;
+}

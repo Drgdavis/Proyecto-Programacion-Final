@@ -5,8 +5,10 @@ declare(strict_types=1);
 require_once __DIR__ . '/../app/Core/ApiException.php';
 require_once __DIR__ . '/../app/Core/ApiClient.php';
 require_once __DIR__ . '/../app/Models/CatalogoModel.php';
+require_once __DIR__ . '/../app/Models/ImportacionModel.php';
 require_once __DIR__ . '/../app/Controllers/InicioController.php';
 require_once __DIR__ . '/../app/Controllers/ProductoController.php';
+require_once __DIR__ . '/../app/Controllers/ImportacionController.php';
 
 function e(mixed $valor): string
 {
@@ -42,7 +44,28 @@ function render(
 }
 
 try {
-    if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
+    $ruta = $_GET['r'] ?? 'inicio';
+
+    if (!is_string($ruta)) {
+        throw new ApiException('La ruta no es valida.', 400);
+    }
+
+    $rutas = [
+        'inicio' => 'GET',
+        'productos' => 'GET',
+        'producto' => 'GET',
+        'importar' => 'GET',
+        'procesar-importacion' => 'POST',
+        'historial' => 'GET',
+        'resultado-importacion' => 'GET',
+    ];
+
+    if (!isset($rutas[$ruta])) {
+        throw new ApiException('La pagina solicitada no existe.', 404);
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] !== $rutas[$ruta]) {
+        header('Allow: ' . $rutas[$ruta]);
         throw new ApiException('Metodo no permitido.', 405);
     }
 
@@ -50,15 +73,11 @@ try {
 
     $api = new ApiClient($config['gateway_url']);
     $catalogo = new CatalogoModel($api);
+    $importaciones = new ImportacionModel($api);
 
-    $inicioController = new InicioController($catalogo);
+    $inicioController = new InicioController($catalogo, $importaciones);
     $productoController = new ProductoController($catalogo);
-
-    $ruta = $_GET['r'] ?? 'inicio';
-
-    if (!is_string($ruta)) {
-        throw new ApiException('La ruta no es valida.', 400);
-    }
+    $importacionController = new ImportacionController($importaciones);
 
     switch ($ruta) {
         case 'inicio':
@@ -73,8 +92,21 @@ try {
             $productoController->detalle();
             break;
 
-        default:
-            throw new ApiException('La pagina solicitada no existe.', 404);
+        case 'importar':
+            $importacionController->formulario();
+            break;
+
+        case 'procesar-importacion':
+            $importacionController->recibir();
+            break;
+
+        case 'historial':
+            $importacionController->historial();
+            break;
+
+        case 'resultado-importacion':
+            $importacionController->resultado();
+            break;
     }
 
 } catch (ApiException $exception) {

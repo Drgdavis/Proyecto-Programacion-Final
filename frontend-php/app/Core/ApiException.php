@@ -6,7 +6,8 @@ class ApiException extends RuntimeException
 {
     public function __construct(
         string $mensaje,
-        private int $estado
+        private int $estado,
+        private ?int $importacionId = null
     ) {
         parent::__construct($mensaje);
     }
@@ -14,5 +15,10 @@ class ApiException extends RuntimeException
     public function estado(): int
     {
         return $this->estado;
+    }
+
+    public function importacionId(): ?int
+    {
+        return $this->importacionId;
     }
 }

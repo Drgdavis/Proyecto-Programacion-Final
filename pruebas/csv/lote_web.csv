@@ -1,0 +1,7 @@
+﻿codigo,nombre,categoria,precio,existencia
+WEB001,"Teclado, desde PHP",Perifericos,475.00,15
+WEB002,Monitor desde PHP,Monitores,1950.00,6
+WEB003,Precio incorrecto,Perifericos,0,10
+WEB004,Categoria incorrecta,NoExiste,100.00,3
+WEB001,Codigo repetido,Perifericos,200.00,8
+WEB005,Existencia incorrecta,Perifericos,100.00,-1

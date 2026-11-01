@@ -16,6 +16,8 @@
         <nav aria-label="Navegación principal">
             <a href="<?= e(enlace('inicio')) ?>">Inicio</a>
             <a href="<?= e(enlace('productos')) ?>">Productos</a>
+            <a href="<?= e(enlace('importar')) ?>">Importar CSV</a>
+            <a href="<?= e(enlace('historial')) ?>">Historial</a>
         </nav>
     </div>
 </header>

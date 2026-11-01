@@ -1,0 +1,81 @@
+<section class="encabezado">
+    <p class="etiqueta">IMPORTACIONES</p>
+    <h1>Importar productos</h1>
+    <p class="secundario">
+        Selecciona un archivo CSV para registrar sus productos.
+    </p>
+</section>
+
+<?php if ($mensaje !== null): ?>
+    <section class="tarjeta error" role="alert">
+        <h2>No se pudo completar la carga</h2>
+        <p><?= e($mensaje) ?></p>
+
+        <?php if ($importacionId !== null): ?>
+            <a href="<?= e(enlace('resultado-importacion', [
+                'id' => $importacionId,
+            ])) ?>">
+                Consultar el intento <?= e($importacionId) ?>
+            </a>
+        <?php endif; ?>
+
+        <p>
+            También puedes revisar
+            <a href="<?= e(enlace('historial')) ?>">el historial</a>.
+        </p>
+    </section>
+<?php endif; ?>
+
+<section class="tarjeta">
+    <h2>Formato del archivo</h2>
+    <p>
+        CSV en UTF-8, separado por comas. El precio utiliza punto decimal
+        y la existencia debe ser un entero.
+    </p>
+
+    <p>Encabezados, en este orden:</p>
+
+    <pre class="ejemplo">codigo,nombre,categoria,precio,existencia</pre>
+
+    <p>Ejemplo de una fila:</p>
+
+    <pre class="ejemplo">NUEVO001,Teclado USB,Perifericos,250.00,10</pre>
+
+    <p class="secundario">
+        Tamaño máximo: 5 MB. Las categorías deben existir en el catálogo.
+    </p>
+</section>
+
+<form
+    method="post"
+    action="<?= e(enlace('procesar-importacion')) ?>"
+    enctype="multipart/form-data"
+    class="tarjeta"
+>
+    <input type="hidden" name="MAX_FILE_SIZE" value="5242880">
+
+    <div class="campo">
+        <label for="archivo">Archivo CSV</label>
+        <input
+            type="file"
+            id="archivo"
+            name="archivo"
+            accept=".csv,text/csv"
+            aria-describedby="ayuda-archivo"
+            required
+        >
+        <p id="ayuda-archivo" class="secundario">
+            Selecciona el archivo que deseas importar.
+        </p>
+    </div>
+
+    <div class="acciones">
+        <button type="submit" class="boton">
+            Importar productos
+        </button>
+
+        <a class="boton secundario" href="<?= e(enlace('historial')) ?>">
+            Ver historial
+        </a>
+    </div>
+</form>
