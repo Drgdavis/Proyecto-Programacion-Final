@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.io.StringReader;
 import java.math.BigDecimal;
 import java.nio.ByteBuffer;
@@ -54,7 +55,7 @@ public class CsvProductosReader {
 
         try (var parser = formato.parse(new StringReader(contenido))) {
             registros = parser.getRecords();
-        } catch (IOException | IllegalArgumentException exception) {
+        } catch (IOException | UncheckedIOException | IllegalArgumentException exception) {
             throw error(
                     "El CSV tiene una estructura invalida. "
                             + "Revisa separadores y comillas.");

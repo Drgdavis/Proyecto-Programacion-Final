@@ -1,0 +1,70 @@
+{
+  "origen": "XML Surefire generado por Maven verify; no corresponde al script HTTP",
+  "generado": "2026-10-31T22:56:00.373081-06:00",
+  "total": 29,
+  "suites": [
+    {
+      "modulo": "catalogo-service",
+      "suite": "com.prograiv.catalogo.CatalogoReglasIntegrationTest",
+      "pruebas": 4,
+      "fallos": 0,
+      "errores": 0,
+      "omitidas": 0,
+      "fecha": null
+    },
+    {
+      "modulo": "catalogo-service",
+      "suite": "com.prograiv.catalogo.CatalogoServiceApplicationTests",
+      "pruebas": 1,
+      "fallos": 0,
+      "errores": 0,
+      "omitidas": 0,
+      "fecha": null
+    },
+    {
+      "modulo": "importaciones-service",
+      "suite": "com.prograiv.importaciones.CatalogoClientTest",
+      "pruebas": 3,
+      "fallos": 0,
+      "errores": 0,
+      "omitidas": 0,
+      "fecha": null
+    },
+    {
+      "modulo": "importaciones-service",
+      "suite": "com.prograiv.importaciones.CsvProductosReaderTest",
+      "pruebas": 18,
+      "fallos": 0,
+      "errores": 0,
+      "omitidas": 0,
+      "fecha": null
+    },
+    {
+      "modulo": "importaciones-service",
+      "suite": "com.prograiv.importaciones.ImportacionesServiceApplicationTests",
+      "pruebas": 1,
+      "fallos": 0,
+      "errores": 0,
+      "omitidas": 0,
+      "fecha": null
+    },
+    {
+      "modulo": "gateway-service",
+      "suite": "com.prograiv.gateway_service.GatewayServiceApplicationTests",
+      "pruebas": 1,
+      "fallos": 0,
+      "errores": 0,
+      "omitidas": 0,
+      "fecha": null
+    },
+    {
+      "modulo": "eureka-server",
+      "suite": "com.prograiv.eureka_server.EurekaServerApplicationTests",
+      "pruebas": 1,
+      "fallos": 0,
+      "errores": 0,
+      "omitidas": 0,
+      "fecha": null
+    }
+  ]
+}

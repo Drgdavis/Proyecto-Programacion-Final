@@ -1,4 +1,4 @@
-package com.prograiv.importaciones_service;
+package com.prograiv.importaciones;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

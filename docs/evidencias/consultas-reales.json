@@ -1,0 +1,136 @@
+{
+  "fecha": "2026-10-31T22:54:13.1059739-06:00",
+  "zona": "America/Mexico_City",
+  "tipo": "GET de solo lectura contra procesos MySQL existentes",
+  "casos": [
+    {
+      "url": "http://localhost:8080/api/categorias",
+      "estado": 200,
+      "respuesta": [
+        {
+          "id": 2,
+          "nombre": "Monitores"
+        },
+        {
+          "id": 1,
+          "nombre": "Perifericos"
+        }
+      ]
+    },
+    {
+      "url": "http://localhost:8080/api/productos?page=0&size=1",
+      "estado": 200,
+      "respuesta": {
+        "contenido": [
+          {
+            "id": 1,
+            "codigo": "PRUEBA001",
+            "nombre": "Teclado de prueba",
+            "categoriaId": 1,
+            "categoria": "Perifericos",
+            "precio": 350.0,
+            "existencia": 20
+          }
+        ],
+        "pagina": 0,
+        "tamanio": 1,
+        "totalElementos": 8,
+        "totalPaginas": 8
+      }
+    },
+    {
+      "url": "http://localhost:8080/api/importaciones/3",
+      "estado": 200,
+      "respuesta": {
+        "importacion": {
+          "id": 3,
+          "archivo": "lote_web.csv",
+          "fecha": "2026-10-31T17:42:42.870863",
+          "estado": "COMPLETADA_CON_ERRORES",
+          "total": 6,
+          "aceptados": 2,
+          "rechazados": 4,
+          "mensaje": null
+        },
+        "resultados": [
+          {
+            "fila": 2,
+            "codigo": "WEB001",
+            "aceptado": true,
+            "productoId": 5,
+            "motivo": null
+          },
+          {
+            "fila": 3,
+            "codigo": "WEB002",
+            "aceptado": true,
+            "productoId": 6,
+            "motivo": null
+          },
+          {
+            "fila": 4,
+            "codigo": "WEB003",
+            "aceptado": false,
+            "productoId": null,
+            "motivo": "El precio debe ser mayor que cero."
+          },
+          {
+            "fila": 5,
+            "codigo": "WEB004",
+            "aceptado": false,
+            "productoId": null,
+            "motivo": "La categoria indicada no existe."
+          },
+          {
+            "fila": 6,
+            "codigo": "WEB001",
+            "aceptado": false,
+            "productoId": null,
+            "motivo": "El codigo del producto ya esta registrado."
+          },
+          {
+            "fila": 7,
+            "codigo": "WEB005",
+            "aceptado": false,
+            "productoId": null,
+            "motivo": "La existencia no puede ser negativa."
+          }
+        ]
+      }
+    },
+    {
+      "url": "http://localhost:8080/api/importaciones/3/errores",
+      "estado": 200,
+      "respuesta": [
+        {
+          "fila": 4,
+          "codigo": "WEB003",
+          "aceptado": false,
+          "productoId": null,
+          "motivo": "El precio debe ser mayor que cero."
+        },
+        {
+          "fila": 5,
+          "codigo": "WEB004",
+          "aceptado": false,
+          "productoId": null,
+          "motivo": "La categoria indicada no existe."
+        },
+        {
+          "fila": 6,
+          "codigo": "WEB001",
+          "aceptado": false,
+          "productoId": null,
+          "motivo": "El codigo del producto ya esta registrado."
+        },
+        {
+          "fila": 7,
+          "codigo": "WEB005",
+          "aceptado": false,
+          "productoId": null,
+          "motivo": "La existencia no puede ser negativa."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+codigo,nombre,categoria,precio,existencia
+,Sin código,Perifericos,10.00,1
+DEMO301,,Perifericos,10.00,1
+DEMO302,Sin categoría,,10.00,1
+DEMO303,Stock decimal,Perifericos,10.00,1.5
+DEMO304,Stock excedido,Perifericos,10.00,2147483648
+DEMO305,Escala inválida,Perifericos,10.001,1

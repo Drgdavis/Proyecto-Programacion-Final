@@ -30,12 +30,22 @@ public class CatalogoClient {
             return List.of();
         }
 
-        LoteResponse respuesta = cliente.post()
-                .uri("http://catalogo-service/api/productos/lote")
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(new LoteRequest(productos))
-                .retrieve()
-                .body(LoteResponse.class);
+        LoteResponse respuesta;
+
+        try {
+            respuesta = cliente.post()
+                    .uri("http://catalogo-service/api/productos/lote")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(new LoteRequest(productos))
+                    .retrieve()
+                    .body(LoteResponse.class);
+
+        } catch (IllegalStateException exception) {
+            throw new RestClientException(
+                    "No se pudo resolver o contactar al catalogo.",
+                    exception
+            );
+        }
 
         if (respuesta == null
                 || respuesta.resultados() == null

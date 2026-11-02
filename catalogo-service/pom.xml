@@ -24,8 +24,12 @@
 	</properties>
 
 	<dependencies>
-
-
+		<!-- Base efimera para pruebas; produccion sigue utilizando MySQL. -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>test</scope>
+		</dependency>
 
 		<!-- API REST -->
 		<dependency>

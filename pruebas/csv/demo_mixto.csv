@@ -1,0 +1,7 @@
+codigo,nombre,categoria,precio,existencia
+DEMO201,"Teclado, mecánico",Perifericos,450.00,12
+DEMO202,Monitor demo,Monitores,1800.00,4
+DEMO203,Precio inválido,Perifericos,0,10
+DEMO204,Categoría inválida,NoExiste,100.00,3
+DEMO201,Código repetido,Perifericos,200.00,8
+DEMO205,Existencia inválida,Perifericos,100.00,-1
