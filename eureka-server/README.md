@@ -28,3 +28,17 @@ Ver [operación](../docs/OPERACION_Y_ERRORES.md).
 Estos endpoints comprueban el servidor Eureka. No garantizan que todos
 los microservicios registrados estén disponibles; cada servicio debe
 comprobarse mediante su propia API.
+
+## Verificación del registro
+
+Con Eureka, catálogo, importaciones y Gateway iniciados, ejecutar desde
+la raíz del repositorio:
+
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\eureka-server\pruebas\Verificar-Eureka.ps1
+
+El script consulta las instancias registradas y utiliza sus hosts y
+puertos para comprobar las APIs reales. No crea datos de negocio.
+
+Si no encuentra un servicio, revisar su arranque, registro y logs.
+Si el servicio acaba de iniciar, esperar a que aparezca registrado y
+volver a ejecutar la comprobación.
