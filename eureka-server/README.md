@@ -17,3 +17,14 @@ Un enlace actuator/info puede devolver404 si no se expone ese endpoint: comproba
 ` .\mvnw.cmd -B verify` ejecuta prueba de contexto. Log en logs/eureka-server.log. La clase principal declara package com.prograiv.eureka; la carpeta física heredada termina en eureka_server.
 
 Ver [operación](../docs/OPERACION_Y_ERRORES.md).
+
+
+## Estado del servidor
+
+- GET /actuator/health: estado general.
+- GET /actuator/health/readiness: disponibilidad para recibir solicitudes.
+- GET /actuator/info: nombre y descripción del componente.
+
+Estos endpoints comprueban el servidor Eureka. No garantizan que todos
+los microservicios registrados estén disponibles; cada servicio debe
+comprobarse mediante su propia API.
