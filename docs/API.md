@@ -104,7 +104,7 @@ No establezcas manualmente un Content-Type JSON para este POST: el cuerpo contie
 | 502 | Importaciones no pudo confirmar el resultado del catálogo |
 | 503 | Gateway no encuentra una instancia disponible |
 
-Los fallos de Gateway pueden tener el formato de error del framework, distinto de ApiError. Una solicitud demasiado grande o sin archivo puede ser rechazada antes de crear un historial. Por eso no todos los errores tienen importacionId.
+Las excepciones propias del Gateway se presentan como JSON con los campos estado y mensaje, conservando el código HTTP. Las respuestas normales de error de los microservicios se transmiten sin reemplazarlas. Una solicitud demasiado grande o sin archivo puede ser rechazada antes de crear un historial. Por eso no todos los errores tienen importacionId.
 
 ## Reglas de formato y persistencia
 

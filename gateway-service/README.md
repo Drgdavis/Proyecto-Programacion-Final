@@ -20,3 +20,21 @@ Probar http://localhost:8080/api/categorias y http://localhost:8080/api/importac
 Clase principal declara package com.prograiv.gateway aunque la carpeta física heredada termina en gateway_service.
 
 Ver [arquitectura](../docs/ARQUITECTURA.md) y [diagnóstico](../docs/OPERACION_Y_ERRORES.md).
+
+
+## Respuestas de error
+
+GatewayErrorHandler convierte las excepciones propias del Gateway
+en respuestas JSON con estado y mensaje.
+
+Ejemplo de una ruta inexistente:
+
+    {"estado":404,"mensaje":"La ruta solicitada no existe en el Gateway."}
+
+Si el balanceador no encuentra una instancia disponible, conserva
+el código 503 y devuelve un mensaje comprensible.
+
+Los detalles internos de las excepciones no se incluyen en el cuerpo.
+Las respuestas enviadas normalmente por los microservicios se conservan.
+
+Las pruebas de GatewayErrorHandler comprueban los estados 404, 503 y 500.
