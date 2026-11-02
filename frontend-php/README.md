@@ -28,3 +28,23 @@ uno con una coma dentro del nombre para mostrar el uso de comillas.
 Antes de importar, reemplazar los datos y utilizar códigos nuevos.
 Conservar UTF-8 y el separador coma. Las categorías deben existir
 en el catálogo.
+
+## Comprobacion automatica del frontend
+
+Con los cinco procesos iniciados, ejecutar desde la raiz del proyecto:
+
+    powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\frontend-php\pruebas\Verificar-Frontend.ps1
+
+Se necesita al menos un producto y una importacion existentes para
+comprobar las pantallas de detalle y resultado.
+
+El script verifica las seis pantallas, el filtro de errores, una
+busqueda sin coincidencias, parametros invalidos, rutas inexistentes,
+metodos HTTP y la plantilla CSV descargable.
+
+Utiliza consultas de lectura y una solicitud POST sin datos a una ruta
+que solo admite GET, para comprobar su rechazo con 405.
+No envia archivos ni crea productos o importaciones.
+
+Conserva cuerpos y cabeceras de las respuestas en una carpeta temporal
+cuya ubicacion muestra al ejecutar.
