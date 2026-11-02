@@ -13,7 +13,7 @@
 
         <?php if ($importacionId !== null): ?>
             <a href="<?= e(enlace('resultado-importacion', [
-                'id' => $importacionId,
+                    'id' => $importacionId,
             ])) ?>">
                 Consultar el intento <?= e($importacionId) ?>
             </a>
@@ -28,6 +28,7 @@
 
 <section class="tarjeta">
     <h2>Formato del archivo</h2>
+
     <p>
         CSV en UTF-8, separado por comas. El precio utiliza punto decimal
         y la existencia debe ser un entero.
@@ -41,29 +42,48 @@
 
     <pre class="ejemplo">NUEVO001,Teclado USB,Perifericos,250.00,10</pre>
 
+    <div class="acciones">
+        <a
+                class="boton secundario"
+                href="/plantilla_productos.csv"
+                download="plantilla_productos.csv"
+        >
+            Descargar plantilla CSV
+        </a>
+    </div>
+
+    <p class="secundario">
+        La plantilla contiene dos productos de ejemplo.
+        Reemplaza sus datos y utiliza códigos que no estén registrados.
+        Conserva los encabezados y guarda el archivo en UTF-8,
+        separado por comas.
+    </p>
+
     <p class="secundario">
         Tamaño máximo: 5 MB. Las categorías deben existir en el catálogo.
     </p>
 </section>
 
 <form
-    method="post"
-    action="<?= e(enlace('procesar-importacion')) ?>"
-    enctype="multipart/form-data"
-    class="tarjeta"
+        method="post"
+        action="<?= e(enlace('procesar-importacion')) ?>"
+        enctype="multipart/form-data"
+        class="tarjeta"
 >
     <input type="hidden" name="MAX_FILE_SIZE" value="5242880">
 
     <div class="campo">
         <label for="archivo">Archivo CSV</label>
+
         <input
-            type="file"
-            id="archivo"
-            name="archivo"
-            accept=".csv,text/csv"
-            aria-describedby="ayuda-archivo"
-            required
+                type="file"
+                id="archivo"
+                name="archivo"
+                accept=".csv,text/csv"
+                aria-describedby="ayuda-archivo"
+                required
         >
+
         <p id="ayuda-archivo" class="secundario">
             Selecciona el archivo que deseas importar.
         </p>

@@ -17,3 +17,14 @@ Rutas r: inicio, productos, producto, importar, procesar-importacion, historial,
 Lint mediante scripts/Verificar-Proyecto.ps1 y pruebas manuales de seis pantallas. No se utiliza curl_close en PHP8.5, donde está obsoleto. El servidor integrado es para desarrollo/demostración local.
 
 Ver [manual](../docs/MANUAL_USUARIO.md), [capturas](../docs/evidencias/README.md).
+
+## Plantilla de importación
+
+La pantalla Importar CSV permite descargar plantilla_productos.csv.
+
+El archivo incluye los encabezados requeridos y dos productos de ejemplo,
+uno con una coma dentro del nombre para mostrar el uso de comillas.
+
+Antes de importar, reemplazar los datos y utilizar códigos nuevos.
+Conservar UTF-8 y el separador coma. Las categorías deben existir
+en el catálogo.

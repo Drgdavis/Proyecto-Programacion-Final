@@ -9,7 +9,9 @@ Abre <http://localhost:8000/> con MySQL y los cinco procesos iniciados. Los indi
 Muestra cantidad de productos, categorías e importaciones, además del resultado más reciente. Los botones llevan a importar y consultar productos. Las importaciones fallidas también forman parte del historial.
 
 ## 2. Importar CSV
-
+El botón Descargar plantilla CSV proporciona un archivo con los
+encabezados y dos productos de ejemplo. Reemplaza los datos antes de
+importarlo, utiliza códigos nuevos y conserva UTF-8 y el separador coma.
 1. Entra a Importar CSV.
 2. Lee los encabezados y reglas del formulario.
 3. Selecciona un archivo .csv de hasta 5 MB, guardado en UTF-8.
