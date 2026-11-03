@@ -2,7 +2,7 @@
     <p class="etiqueta">IMPORTACIONES</p>
     <h1>Historial</h1>
     <p class="secundario">
-        Consulta los archivos procesados y sus resultados.
+        Archivos procesados y resultados de importación.
     </p>
 
     <a class="boton" href="<?= e(enlace('importar')) ?>">

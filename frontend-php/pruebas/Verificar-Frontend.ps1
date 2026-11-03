@@ -64,7 +64,7 @@ function Consultar-Web {
     $codigo = & curl.exe @argumentos
 
     if ($LASTEXITCODE -ne 0) {
-        throw "No se pudo consultar $Ruta. Revisa los procesos."
+        throw "No se pudo consultar $Ruta. Comprobar el estado de los procesos."
     }
 
     return [pscustomobject]@{

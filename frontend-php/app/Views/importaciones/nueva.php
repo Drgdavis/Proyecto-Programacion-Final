@@ -2,7 +2,7 @@
     <p class="etiqueta">IMPORTACIONES</p>
     <h1>Importar productos</h1>
     <p class="secundario">
-        Selecciona un archivo CSV para registrar sus productos.
+        Carga de productos mediante archivos CSV.
     </p>
 </section>
 
@@ -20,7 +20,7 @@
         <?php endif; ?>
 
         <p>
-            También puedes revisar
+            Los intentos anteriores están disponibles en
             <a href="<?= e(enlace('historial')) ?>">el historial</a>.
         </p>
     </section>
@@ -54,9 +54,9 @@
 
     <p class="secundario">
         La plantilla contiene dos productos de ejemplo.
-        Reemplaza sus datos y utiliza códigos que no estén registrados.
-        Conserva los encabezados y guarda el archivo en UTF-8,
-        separado por comas.
+        Los datos de ejemplo deben reemplazarse por códigos que no estén registrados.
+        El archivo debe conservar los encabezados, la codificación UTF-8
+        y el separador coma.
     </p>
 
     <p class="secundario">
@@ -85,7 +85,7 @@
         >
 
         <p id="ayuda-archivo" class="secundario">
-            Selecciona el archivo que deseas importar.
+            Archivo CSV con los productos de la importación.
         </p>
     </div>
 

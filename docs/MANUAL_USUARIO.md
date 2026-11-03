@@ -2,7 +2,7 @@
 
 ## Antes de comenzar
 
-Abre <http://localhost:8000/> con MySQL y los cinco procesos iniciados. Los indicadores se consultan en vivo: si los servicios están detenidos puede mostrarse una pantalla de error.
+La interfaz está disponible en <http://localhost:8000/> con MySQL y los cinco procesos iniciados. Los indicadores se consultan en vivo: si los servicios están detenidos puede mostrarse una pantalla de error.
 
 ## 1. Inicio
 
@@ -10,16 +10,17 @@ Muestra cantidad de productos, categorías e importaciones, además del resultad
 
 ## 2. Importar CSV
 El botón Descargar plantilla CSV proporciona un archivo con los
-encabezados y dos productos de ejemplo. Reemplaza los datos antes de
-importarlo, utiliza códigos nuevos y conserva UTF-8 y el separador coma.
-1. Entra a Importar CSV.
-2. Lee los encabezados y reglas del formulario.
-3. Selecciona un archivo .csv de hasta 5 MB, guardado en UTF-8.
-4. Pulsa Importar productos una vez y espera la respuesta.
-5. Si termina, se abre la pantalla de resultado guardado.
-6. Si el archivo es rechazado, lee el mensaje y consulta el intento cuando exista un enlace.
+encabezados y dos productos de ejemplo. Antes de la importación se deben
+reemplazar los datos, utilizar códigos nuevos y conservar UTF-8 y el separador coma.
 
-Un archivo separado por punto y coma no cumple el formato. Los nombres de categorías deben existir: en la instalación inicial son Perifericos y Monitores. Para una nueva importación utiliza códigos nuevos si deseas que sean aceptados.
+1. Acceder a Importar CSV.
+2. Revisar los encabezados y reglas del formulario.
+3. Seleccionar un archivo .csv de hasta 5 MB, guardado en UTF-8.
+4. Pulsar Importar productos una vez y esperar la respuesta.
+5. Si termina, se abre la pantalla de resultado guardado.
+6. Si el archivo es rechazado, se muestra un mensaje y se permite consultar el intento cuando exista un enlace.
+
+Un archivo separado por punto y coma no cumple el formato. Los nombres de categorías deben existir: en la instalación inicial son Perifericos y Monitores. La aceptación de nuevos productos requiere códigos que no estén registrados.
 
 ## 3. Resultado
 
@@ -35,7 +36,7 @@ COMPLETADA_CON_ERRORES significa que la evaluación terminó. FALLIDA indica un 
 
 ## 4. Productos
 
-Busca por código, nombre o categoría. Los criterios se combinan. Por página permite elegir de 1 a 100 filas. Buscar inicia desde la primera página; Anterior y Siguiente conservan los filtros.
+La búsqueda admite código, nombre o categoría. Los criterios se combinan. Por página permite elegir de 1 a 100 filas. Buscar inicia desde la primera página; Anterior y Siguiente conservan los filtros.
 
 Limpiar elimina los criterios. Una búsqueda sin coincidencias muestra un mensaje y no es un error del servidor.
 
@@ -51,12 +52,12 @@ Lista archivos desde el intento más reciente y muestra estado y contadores. Ver
 
 | Situación | Acción |
 |---|---|
-| No se pudo contactar al servicio | Revisa los procesos; no repitas inmediatamente una carga |
-| Código ya registrado | Corrige el CSV o consulta el producto existente |
-| Categoría inexistente | Utiliza una categoría disponible |
-| Encabezados incorrectos | Corrige nombres, orden y separador |
-| Archivo vacío | Selecciona un archivo con encabezado y productos |
-| Resultado no confirmado | Revisa historial y catálogo antes de volver a importar |
-| 503 en Gateway | Comprueba registro UP y espera actualización del descubrimiento |
+| No se pudo contactar al servicio | Comprobar los procesos antes de repetir una carga |
+| Código ya registrado | Corregir el CSV o consultar el producto existente |
+| Categoría inexistente | Utilizar una categoría disponible |
+| Encabezados incorrectos | Corregir nombres, orden y separador |
+| Archivo vacío | Seleccionar un archivo con encabezado y productos |
+| Resultado no confirmado | Consultar historial y catálogo antes de volver a importar |
+| 503 en Gateway | Comprobar registro UP y esperar la actualización del descubrimiento |
 
-No necesitas escribir comandos SQL para utilizar las pantallas. Las tareas de instalación y recuperación se describen en la guía de operación.
+El uso de las pantallas no requiere comandos SQL. Las tareas de instalación y recuperación se describen en la guía de operación.

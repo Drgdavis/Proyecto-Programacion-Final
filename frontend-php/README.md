@@ -4,7 +4,7 @@ Interfaz de seis pantallas. No usa credenciales MySQL ni accede a las bases. Api
 
 ## Ejecutar
 
-PHP con cURL habilitado. Desde raíz: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Iniciar-Servicio.ps1 -Servicio Frontend`. Abre http://localhost:8000/. El script limita carga a5MB y cuerpo a6MB.
+PHP con cURL habilitado. Desde raíz: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Iniciar-Servicio.ps1 -Servicio Frontend`. La interfaz está disponible en http://localhost:8000/. El script limita carga a5MB y cuerpo a6MB.
 
 ## Estructura
 

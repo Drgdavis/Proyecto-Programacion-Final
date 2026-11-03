@@ -1,6 +1,6 @@
 # Requisitos y cierre de entrega
 
-Corte: 31 de octubre de 2026. Fuente: enunciado `[PrograIV]ProyectoDeFinalDeCurso (1).pdf`, cuatro páginas, y verificaciones del proyecto. Esta lista describe resultados observados; una casilla implementada no equivale a una calificación.
+Corte: 2 de noviembre de 2026. Fuente: enunciado `[PrograIV]ProyectoDeFinalDeCurso (2).pdf`, cuatro páginas, y verificaciones del proyecto. Esta lista describe resultados observados; una casilla implementada no equivale a una calificación.
 
 ## Matriz de cumplimiento
 
@@ -24,16 +24,15 @@ Corte: 31 de octubre de 2026. Fuente: enunciado `[PrograIV]ProyectoDeFinalDeCurs
 | Swagger/OpenAPI | Documentación ejecutable de las dos APIs | Probado con HTTP 200 |
 | Logback | Archivos rotativos y filtro de método/ruta/estado/duración | Probado con registros 200 y 400 |
 | Pruebas de integración | Script PowerShell: 33 comprobaciones | Ejecución real aprobada |
-| Pruebas Maven | 29 pruebas entre cuatro módulos | verify aprobado |
+| Pruebas Maven | 32 pruebas entre cuatro módulos | verify aprobado |
 | README y manuales | Operación, arquitectura, API, usuario y diagnóstico | Preparados |
-| Cinco commits por componente principal | Conteo conservador independiente por carpeta | **Pendiente en varios componentes** |
+| Cinco commits por componente principal | Catálogo 8; importaciones 5; Eureka 5; Gateway 5; frontend 5 | Cantidad mínima alcanzada; historial disponible para revisión |
 
-## Pendientes que no se pueden sustituir con documentación
+## Alcance de la verificación
 
-1. Revisar el conteo de Git después del commit de Swagger. El catálogo supera cinco; los otros componentes requieren avances reales adicionales. No borrar ni reconstruir la historia para simular trabajo.
-2. Ejecutar la instalación en otra computadora o en una base limpia con credenciales locales. Los tests H2 no demuestran por sí solos compatibilidad completa con un MySQL recién instalado.
-3. Cambiar las contraseñas si se utilizaron valores compartidos en scripts anteriores. No registrar las nuevas claves en Git.
-4. Reiniciar los servicios después de compilar cambios: un proceso Java ya iniciado conserva las clases con las que arrancó.
+La aplicación se verificó en el entorno local existente con MySQL. No se ha comprobado la instalación en otra computadora o sobre una base recién creada. Los tests con H2 complementan las pruebas de MySQL.
+
+Para configurar un entorno nuevo, seguir las instrucciones de [operación](OPERACION_Y_ERRORES.md) y utilizar credenciales locales. Después de compilar cambios, reiniciar los procesos para cargar las clases actualizadas.
 
 ## Paquete a entregar
 

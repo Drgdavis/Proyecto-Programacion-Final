@@ -2,14 +2,14 @@
 
 Aplicación PHP MVC y dos microservicios Spring Boot para cargar productos desde CSV, consultar el catálogo y revisar los resultados de cada importación.
 
-## Empieza aquí
+## Instalación y ejecución
 
-1. Revisa [requisitos y estado real de la entrega](docs/REQUISITOS_Y_ENTREGA.md).
-2. Configura Java 21, PHP 8.2 o superior con cURL y MySQL 8.4.
-3. Ejecuta los scripts de [database](database/README.md).
-4. Sigue [el arranque de los cinco procesos](docs/OPERACION_Y_ERRORES.md).
-5. Abre <http://localhost:8000/>.
-6. Ejecuta las [pruebas](docs/PRUEBAS_INTEGRACION.md).
+1. Consultar [requisitos y estado real de la entrega](docs/REQUISITOS_Y_ENTREGA.md).
+2. Configurar Java 21, PHP 8.2 o superior con cURL y MySQL 8.4.
+3. Ejecutar los scripts de [database](database/README.md).
+4. Consultar [el arranque de los cinco procesos](docs/OPERACION_Y_ERRORES.md).
+5. Acceder a <http://localhost:8000/>.
+6. Ejecutar las [pruebas](docs/PRUEBAS_INTEGRACION.md).
 
 No se necesita XAMPP. PHP utiliza su servidor local; las bases se ejecutan en MySQL Server. Maven se incluye mediante los wrappers de cada servicio.
 
@@ -41,16 +41,16 @@ El frontend no consulta MySQL. Importaciones no escribe productos directamente. 
 
 En Workbench, conectado como administrador:
 
-1. Ejecuta `database/01_catalogo.sql`.
-2. Ejecuta `database/02_importaciones.sql`.
-3. Usa las plantillas `usuario_catalogo.example.sql` y `usuario_importaciones.example.sql`, sustituyendo el marcador de contraseña en una copia local.
-4. Si un usuario ya existe, `CREATE USER IF NOT EXISTS` no cambia su clave: consulta las instrucciones de `database/README.md`.
+1. Ejecutar `database/01_catalogo.sql`.
+2. Ejecutar `database/02_importaciones.sql`.
+3. Utilizar las plantillas `usuario_catalogo.example.sql` y `usuario_importaciones.example.sql`, sustituyendo el marcador de contraseña en una copia local.
+4. Si un usuario ya existe, `CREATE USER IF NOT EXISTS` no cambia su clave: consultar las instrucciones de `database/README.md`.
 
-Las claves se suministran mediante `CATALOGO_DB_PASSWORD` e `IMPORTACIONES_DB_PASSWORD`. No se guardan en el repositorio. Una plantilla anterior contenía una clave concreta: si fue utilizada, cámbiala en MySQL y actualiza las variables de las terminales.
+Las claves se suministran mediante `CATALOGO_DB_PASSWORD` e `IMPORTACIONES_DB_PASSWORD`. No se guardan en el repositorio. Una plantilla anterior contenía una clave concreta: si fue utilizada, se requiere cambiarla en MySQL y actualizar las variables de las terminales.
 
 ## Arranque
 
-Desde la raíz del repositorio, abre cinco terminales. Ejecuta un comando por terminal:
+Desde la raíz del repositorio se requieren cinco terminales, una por proceso:
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Iniciar-Servicio.ps1 -Servicio Eureka
@@ -72,7 +72,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Iniciar-Servic
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Iniciar-Servicio.ps1 -Servicio Frontend
 ```
 
-Espera a que Eureka arranque antes de los clientes. Los dos servicios de negocio solicitarán su contraseña si la variable no está definida. Conserva las cinco terminales abiertas; utiliza una sexta para comandos. Para detener un proceso, Ctrl+C en su terminal.
+Eureka debe iniciar antes que los clientes. Los dos servicios de negocio solicitarán su contraseña si la variable no está definida. Las cinco terminales deben permanecer abiertas. Los comandos adicionales se ejecutan en otra terminal. Para detener un proceso, Ctrl+C en su terminal.
 
 ## Formato CSV
 
@@ -98,7 +98,7 @@ Un archivo válido estructuralmente puede tener filas rechazadas. `COMPLETADA_CO
 
 Inicio, carga CSV, resultado por fila, productos con filtros y paginación, detalle de producto e historial paginado.
 
-Consulta el [manual de usuario](docs/MANUAL_USUARIO.md) y las [capturas reales](docs/evidencias/README.md).
+Consultar el [manual de usuario](docs/MANUAL_USUARIO.md) y las [capturas reales](docs/evidencias/README.md).
 
 ## APIs y diagnóstico
 

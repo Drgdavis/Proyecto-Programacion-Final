@@ -15,7 +15,7 @@
 
 Las ejecuciones Maven de este cierre terminaron aproximadamente a las 22:40 del 31 de octubre de 2026, hora de Ciudad de México. Los reportes Surefire se generan en cada `target/surefire-reports`; no se versionan los binarios.
 
-La primera prueba manual de catálogo caído devolvió 500 (intento 12); después de corregir la traducción del error de transporte devolvió 502 (intento 13). No presentar la primera como una prueba aprobada del comportamiento final.
+La primera prueba manual de catálogo caído devolvió 500 (intento 12); después de corregir la traducción del error de transporte devolvió 502 (intento 13). El primer resultado corresponde al comportamiento anterior a la corrección.
 
 ## 1. Verificación sin base de producción
 
@@ -23,7 +23,7 @@ La primera prueba manual de catálogo caído devolvió 500 (intento 12); despué
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\Verificar-Proyecto.ps1
 ```
 
-Ejecuta Maven verify por módulo y revisión sintáctica de PHP. Las pruebas de negocio usan H2 solo en `src/test/resources`; el arranque normal sigue usando MySQL. Maven puede necesitar descargar dependencias la primera vez.
+El script ejecuta Maven verify por módulo y la revisión sintáctica de PHP. Las pruebas de negocio usan H2 solo en `src/test/resources`; el arranque normal sigue usando MySQL. Maven puede necesitar descargar dependencias la primera vez.
 
 ### Qué prueban los tests de catálogo
 
@@ -53,7 +53,7 @@ Inicia MySQL y los cinco procesos siguiendo [operación](OPERACION_Y_ERRORES.md)
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\pruebas\Verificar-Integracion.ps1
 ```
 
-O usa `Verificar-Proyecto.ps1 -Integracion` para ambos niveles. El script genera un prefijo único y archivos temporales. **Crea dos productos y varios intentos persistidos**; utiliza una base de práctica. No elimina registros existentes.
+La opción `Verificar-Proyecto.ps1 -Integracion` ejecuta ambos niveles. El script genera un prefijo único y archivos temporales. **Crea dos productos y varios intentos persistidos**; su ejecución requiere una base de práctica. No elimina registros existentes.
 
 Comprobaciones observadas: categorías disponibles; página negativa 400; archivo válido 201/COMPLETADA; coma conservada; duplicados rechazados; cuatro filas inválidas conservadas; vacío, solo encabezados, encabezados incorrectos y UTF-8 inválido 400 con intento FALLIDA; detalle recuperable y errores del archivo válido vacíos.
 
@@ -62,12 +62,12 @@ La ejecución mostrada terminó con: `PRUEBAS COMPLETADAS: 33 comprobaciones.` N
 ## 3. Prueba manual de disponibilidad
 
 1. Confirma que el catálogo responde por Gateway.
-2. Detén únicamente catálogo con Ctrl+C.
-3. Envía un archivo con un código nuevo.
-4. Observa el error 502 de importaciones y su importacionId.
-5. Consulta el intento: FALLIDA. Los contadores pueden no representar un resultado confirmado.
-6. Reinicia catálogo, espera registro y actualización de cachés y consulta productos.
-7. Antes de reenviar, comprueba si el código ya existe. Un fallo de red no garantiza que el catálogo no escribió.
+2. Detener únicamente catálogo con Ctrl+C.
+3. Enviar un archivo con un código nuevo.
+4. Comprobar el error 502 de importaciones y su importacionId.
+5. Consultar el intento: FALLIDA. Los contadores pueden no representar un resultado confirmado.
+6. Reiniciar catálogo, esperar el registro y la actualización de cachés, y consultar productos.
+7. Antes de reenviar, comprobar si el código ya existe. Un fallo de red no garantiza que el catálogo no escribió.
 
 Si Gateway no descubre importaciones, devuelve 503 antes de llegar al coordinador. Un estado UP en Eureka puede ser una concesión aún no vencida y no garantiza disponibilidad instantánea.
 
@@ -95,3 +95,19 @@ Los casos de esta tabla sin resultado específico en las evidencias son instrucc
 Utilizar códigos nuevos para la demostración, guardar el ID devuelto y explicar por qué reenviar un CSV válido puede producir duplicados rechazados. El contador del inicio refleja datos reales de la base y cambia con cada ejecución.
 
 Ver [evidencias](evidencias/README.md) y [limitaciones](LIMITACIONES.md).
+
+## Actualización del 2 de noviembre de 2026
+
+El corte anterior se conserva como evidencia histórica.
+
+- Maven: 32 pruebas aprobadas, sin fallos ni errores.
+- Distribución: catálogo 5, importaciones 22, Gateway 4 y Eureka 1.
+- Los cuatro módulos finalizaron con BUILD SUCCESS.
+- Revisión sintáctica de PHP completada sin errores.
+- Frontend: 30 comprobaciones aprobadas de pantallas, parámetros,
+  métodos HTTP y plantilla CSV.
+- Eureka: registro y disponibilidad de catálogo, importaciones y
+  Gateway comprobados mediante Verificar-Eureka.ps1.
+
+Estas verificaciones se realizaron en el entorno local existente.
+No equivalen a una instalación comprobada en otra computadora.

@@ -1,7 +1,7 @@
 <section class="encabezado">
     <p class="etiqueta">CATÁLOGO</p>
     <h1>Productos</h1>
-    <p class="secundario">Busca y consulta los productos registrados.</p>
+    <p class="secundario">Consulta de productos registrados.</p>
 </section>
 
 <form method="get" action="/index.php" class="tarjeta filtros">

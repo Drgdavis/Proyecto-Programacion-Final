@@ -133,7 +133,7 @@ No existe una transacción distribuida entre las bases. Si catálogo guarda y se
 En procesos completados: total = aceptados + rechazados.
 En FALLIDA puede ser menor: una fila no confirmada no equivale a una fila inválida.
 
-## Decisiones que debes poder justificar
+## Justificación de decisiones técnicas
 
 - BigDecimal conserva precisión decimal para precios.
 - DTO evita exponer entidades y relaciones LAZY al serializador.

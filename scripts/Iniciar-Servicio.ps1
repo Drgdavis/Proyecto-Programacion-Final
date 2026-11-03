@@ -51,10 +51,10 @@ try {
         Write-Host "Frontend: http://localhost:8000/ - detener con Ctrl+C."
         & $phpEjecutable -d upload_max_filesize=5M -d post_max_size=6M -S localhost:8000 -t public
     } else {
-        Write-Host "Iniciando $Servicio. Conserva esta terminal abierta."
+        Write-Host "Iniciando $Servicio. La terminal debe permanecer abierta."
         & .\mvnw.cmd spring-boot:run
     }
-    if ($LASTEXITCODE -ne 0) { throw "$Servicio termino con codigo $LASTEXITCODE. Revisa las lineas anteriores." }
+    if ($LASTEXITCODE -ne 0) { throw "$Servicio termino con codigo $LASTEXITCODE. El detalle del error aparece en las lineas anteriores." }
 } finally {
     Pop-Location
 }

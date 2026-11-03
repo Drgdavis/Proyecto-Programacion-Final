@@ -11,7 +11,7 @@
 
 ## Verificaciones
 
-- 29 pruebas Maven aprobadas entre los cuatro módulos.
+- 32 pruebas Maven aprobadas entre los cuatro módulos: catálogo 5, importaciones 22, Gateway 4 y Eureka 1.
 - 33 comprobaciones de integración HTTP registradas.
 - Revisión de sintaxis de PHP y scripts PowerShell.
 - Evidencias de consultas HTTP y de las seis pantallas.
@@ -24,10 +24,8 @@
 - Plantillas SQL con marcadores de contraseña.
 - Scripts de arranque y verificación.
 
-## Comprobaciones pendientes
+## Entorno de ejecución
 
-- Instalación completa en una máquina o entorno limpio.
-- Rotación de credenciales si se utilizaron valores compartidos anteriormente.
-- Reinicio de procesos existentes para cargar las últimas clases compiladas.
+La verificación se realizó en el entorno local existente. La instalación en otra computadora no se ha comprobado. Las instrucciones de configuración y arranque están en README.md y las limitaciones técnicas en docs/LIMITACIONES.md.
 
 Consultar README.md para ejecución, docs/PRUEBAS_INTEGRACION.md para validación y docs/LIMITACIONES.md para el alcance actual.

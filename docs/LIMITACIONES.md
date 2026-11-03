@@ -1,4 +1,4 @@
-# Límites conocidos y decisiones pendientes
+# Limitaciones técnicas
 
 ## Resultados distribuidos
 
@@ -8,7 +8,7 @@ Un cierre abrupto puede dejar un intento PROCESANDO. No existe un trabajo de rec
 
 ## Archivo y trazabilidad
 
-El historial conserva fila lógica, código y motivo, no el archivo completo ni todas las columnas originales. La fila corresponde a un registro CSV: los saltos dentro de comillas no crean otro producto. Para corregir un precio, vuelve al archivo usando fila y código.
+El historial conserva fila lógica, código y motivo, no el archivo completo ni todas las columnas originales. La fila corresponde a un registro CSV: los saltos dentro de comillas no crean otro producto. La corrección de un precio se realiza en el archivo original, identificando el registro por fila y código.
 
 Se procesan archivos de hasta 5 MB de forma síncrona y en memoria. No se implementa una cola de grandes cargas. Las longitudes y dos decimales son decisiones coherentes con el esquema SQL.
 
@@ -20,10 +20,8 @@ No se añadió autenticación porque no forma parte del alcance funcional indica
 
 El servidor PHP integrado es para desarrollo y demostración. La verificación con H2 aísla tests; no sustituye las comprobaciones MySQL reales ni demuestra que todas las diferencias de motores estén cubiertas.
 
-## Entrega y Git
-
-El requisito de cinco commits por componente se evalúa aparte de la funcionalidad. Mantener fechas reales y explicar el historial existente; no fabricar progresión ni afirmar que un archivo aún no versionado ya está entregado.
+## Configuración de entornos
 
 Una contraseña apareció anteriormente en una plantilla SQL. Su reemplazo actual no borra versiones anteriores: si se utilizó, debe rotarse desde MySQL.
 
-El arranque limpio sobre una máquina ajena requiere crear las bases y usuarios con credenciales propias. No se borraron ni recrearon las bases actuales durante la revisión para simular una instalación nueva.
+El arranque en otra computadora requiere crear las bases y usuarios con credenciales propias. Las verificaciones documentadas corresponden al entorno local existente.

@@ -2,7 +2,7 @@
 
 ## Primera instalación
 
-Se utiliza MySQL 8.4. En Workbench abre una conexión administrativa y ejecuta, en orden:
+Se utiliza MySQL 8.4. En Workbench, los scripts se ejecutan mediante una conexión administrativa, en este orden:
 
 1. [01_catalogo.sql](01_catalogo.sql).
 2. [02_importaciones.sql](02_importaciones.sql).
@@ -17,7 +17,7 @@ La base del catálogo contiene categorías y productos. La base de importaciones
 - La creación y modificación del esquema se ejecuta como administrador.
 - La aplicación no necesita permisos CREATE, DROP ni ALTER.
 
-`CREATE USER IF NOT EXISTS` no actualiza una contraseña existente. Para cambiarla, ejecuta como administrador, sustituyendo el marcador:
+`CREATE USER IF NOT EXISTS` no actualiza una contraseña existente. Para cambiarla, ejecutar como administrador con el marcador sustituido por la clave local:
 
 ```sql
 ALTER USER 'catalogo_app'@'localhost'
@@ -27,17 +27,17 @@ ALTER USER 'importaciones_app'@'localhost'
     IDENTIFIED BY 'OTRA_CLAVE_LOCAL';
 ```
 
-No guardes las claves sustituidas en Git. Si utilizaste la clave concreta que apareció anteriormente en una plantilla del proyecto, cámbiala: sustituir el archivo actual no la elimina de commits antiguos.
+Las claves locales deben permanecer fuera de Git. Las claves expuestas en versiones anteriores requieren rotación, ya que reemplazar una plantilla no modifica el historial.
 
 ## Instalaciones anteriores
 
-La columna `importaciones.mensaje` se agregó durante el desarrollo. Si tu tabla fue creada antes de esa mejora, comprueba:
+La columna `importaciones.mensaje` se agregó durante el desarrollo. Para tablas creadas antes de esa mejora, comprobar:
 
 ```sql
 SHOW COLUMNS FROM importaciones_db.importaciones LIKE 'mensaje';
 ```
 
-Si no existe, ejecuta una vez:
+Si la columna no existe, ejecutar una vez:
 
 ```sql
 ALTER TABLE importaciones_db.importaciones ADD COLUMN mensaje TEXT;
@@ -55,8 +55,8 @@ SHOW GRANTS FOR 'catalogo_app'@'localhost';
 SHOW GRANTS FOR 'importaciones_app'@'localhost';
 ```
 
-No ejecutes los tests Maven contra estas bases. El perfil de tests utiliza H2 efímero y genera su propio esquema.
+Los tests Maven se ejecutan sobre una base aislada, no sobre estas bases. El perfil de tests utiliza H2 efímero y genera su propio esquema.
 
 ## Copia de respaldo
 
-Utiliza Data Export de Workbench y selecciona ambas bases, estructura y datos. Guarda la copia fuera de Git si contiene información o claves locales. Para una demostración basta con los scripts y CSV del repositorio; no es obligatorio entregar el historial personal completo.
+El respaldo se realiza mediante Data Export de Workbench, incluyendo estructura y datos de ambas bases. Las copias con información o claves locales deben permanecer fuera de Git. Para una demostración basta con los scripts y CSV del repositorio; no es obligatorio entregar el historial personal completo.

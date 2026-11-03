@@ -15,6 +15,6 @@ Capturas tomadas el 31 de octubre de 2026 sobre la aplicación local ya ejecutad
 
 [Resultados Maven](maven-resultados.json): resumen extraído de los XML Surefire, con fecha de generación y resultado por suite. Los reportes originales quedan en target y se regeneran con verify.
 
-El resultado histórico 3 contiene dos filas aceptadas y cuatro rechazadas. Los intentos12/13 documentan pruebas manuales de catálogo caído; el13 recibió502 después de corregir el manejo de comunicación. No se fabrica una captura de instalación limpia ni de una prueba no realizada.
+El resultado histórico 3 contiene dos filas aceptadas y cuatro rechazadas. Los intentos12/13 documentan pruebas manuales de catálogo caído; el13 recibió502 después de corregir el manejo de comunicación. Las evidencias corresponden a las pruebas realizadas en el entorno local existente.
 
 Para entregar evidencia adicional, repetir la demostración con códigos nuevos y capturar la pantalla completa de resultado, un400 en Swagger y la línea de log correspondiente. No incluir claves.

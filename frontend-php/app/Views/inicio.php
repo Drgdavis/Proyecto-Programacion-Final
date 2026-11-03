@@ -2,7 +2,7 @@
     <p class="etiqueta">RESUMEN</p>
     <h1>Gestión de productos</h1>
     <p class="secundario">
-        Importa productos, revisa sus resultados y consulta el catálogo.
+        Importación de productos, resultados y consulta del catálogo.
     </p>
 </section>
 
